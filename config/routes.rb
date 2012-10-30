@@ -1,4 +1,10 @@
 FBCPService::Application.routes.draw do
+  get "facebooks/index"
+
+  get "facebooks/login"
+
+  get "facebooks/logout"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
