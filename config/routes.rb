@@ -1,9 +1,21 @@
 FBCPService::Application.routes.draw do
-  get "facebooks/index"
+#  get "facebooks/index"
 
-  get "facebooks/login"
+#  get "facebooks/login"
 
-  get "facebooks/logout"
+#  get "facebooks/logout"
+
+  root :to => "facebooks#index"
+
+  match '/index',      to: 'facebooks#index'
+  match '/login',      to: 'facebooks#login'
+  match '/logout',     to: 'facebooks#logout'
+  match '/callback',   to: 'facebooks#callback'
+  match '/menu',       to: 'facebooks#menu'
+  match '/posttowall',  to: 'facebooks#posttowall'
+  match '/getposts',  to: 'facebooks#getposts'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
