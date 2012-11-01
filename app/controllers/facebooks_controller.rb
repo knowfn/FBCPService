@@ -2,8 +2,8 @@ class FacebooksController < ApplicationController
 
   APP_ID="166864856786067"
   APP_SECRET="1b681b2579723f696c48775a6d8a302a"
-  SITE_URL="http://localhost:3000/"
-#  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
+#  SITE_URL="http://localhost:3000/"
+  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
   
   def index
     Rails.logger.info("index CALLED ...........................")
