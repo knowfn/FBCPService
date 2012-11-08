@@ -2,8 +2,8 @@ class FacebooksController < ApplicationController
 
   APP_ID="166864856786067"
   APP_SECRET="1b681b2579723f696c48775a6d8a302a"
-#  SITE_URL="http://localhost:3000/"
-  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
+  SITE_URL="http://localhost:3000/"
+#  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
   
   def index
     Rails.logger.info("index CALLED ...........................")
@@ -76,18 +76,17 @@ class FacebooksController < ApplicationController
         Rails.logger.info("getposts about to get from FB...........................")
         Rails.logger.info("Access_Token : ...........................")
         Rails.logger.info(session['access_token'])
-
-
+        
+        Rails.logger.info("...........................")
         @me = @graph.get_object("sb.knowfn")
         Rails.logger.info(@me)
-
+        Rails.logger.info("...........................")
         @UserPosts = @graph.get_connections("me", "feed")
         Rails.logger.info(@UserPosts[0])
-        
      else
         @face='<a href="/login">Login</a>'
      end
-     redirect_to '/menu'
+#     redirect_to '/menu'
   end
 
 end
