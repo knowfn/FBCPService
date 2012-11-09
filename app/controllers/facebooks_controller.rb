@@ -61,7 +61,7 @@ class FacebooksController < ApplicationController
         
         Rails.logger.info("posttowall about to post on FB...........................")
 #        @graph.put_object("me", "feed", :message => "I am writing from posttowall on Oct 31st 5:05pm!", :link => 'http://www.iApprove.com', :picture => 'http://furious-spring-4433.herokuapp.com/greenCheck.png', :name => 'From iApprove Website', :description => 'Checkout iApprove website!')
-        @graph.put_wall_post("I am posting on Wed Oct 31st at 10:30pm!!!!!!!")       
+        @graph.put_wall_post("I am posting on Thu Nov 7th at 5:28pm!!!!!!!")       
      else
         @face='<a href="/login">Login</a>'
      end

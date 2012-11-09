@@ -1,11 +1,18 @@
 FBCPService::Application.routes.draw do
+  resources :users
+  
+#  get "users/index"
+#  get "users/new"
+#  get "users/show"
+#  get "users/create"
+
 #  get "facebooks/index"
-
 #  get "facebooks/login"
-
 #  get "facebooks/logout"
 
   root :to => "facebooks#index"
+
+  match '/signup', to: 'users#new'
 
   match '/index',      to: 'facebooks#index'
   match '/login',      to: 'facebooks#login'

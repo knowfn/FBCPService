@@ -2,14 +2,15 @@
 
 <h1>Facebooks#getposts</h1>
 
-<p> ---------------------------------------------------- </p>
 
-<%= @UserPosts[0]["message"]%>
+  <div class="alert alert-error">
+    Here Are The Latest Posts ...
+  </div>
+
+  <ul>
+    <% @UserPosts.each do |pst| %>
+      <li> <%= pst["message"] %></li>
+    <% end %>
+  </ul>
 
 
-<p> ---------------------------------------------------- </p>
-
-<%= @UserPosts[0]%>
-
-<p> ---------------------------------------------------- </p>
-<p>Find me in app/views/facebooks/posttowall.html.erb</p>
