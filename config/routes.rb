@@ -1,10 +1,20 @@
 FBCPService::Application.routes.draw do
+
   resources :users
-  
+  resources :facebookposts, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+
 #  get "users/index"
 #  get "users/new"
 #  get "users/show"
 #  get "users/create"
+
+#  get "sessions/new"
+#  get "sessions/create"
+#  get "sessions/destroy"
+
+#  get "facebookposts/create"
+#  get "facebookposts/destroy"
 
 #  get "facebooks/index"
 #  get "facebooks/login"
@@ -13,6 +23,8 @@ FBCPService::Application.routes.draw do
   root :to => "facebooks#index"
 
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/index',      to: 'facebooks#index'
   match '/login',      to: 'facebooks#login'

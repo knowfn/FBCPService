@@ -1,0 +1,2 @@
+module FacebookpostsHelper
+end

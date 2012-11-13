@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @users = User.all
   end
 
   def new
@@ -8,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    Rails.logger.info("......user:show CALLED.....................")
     @user = User.find(params[:id])
+    sign_in @user
+    @fbposts = @user.facebookposts 
+    @facebookpost = @user.facebookposts.build(params[:facebookpost])  
   end
 
   def create
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to the FBCP!"
       redirect_to @user
-  else
+    else
       render 'new'
     end
   end

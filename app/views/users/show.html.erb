@@ -1,3 +1,27 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %></h1>
 <%= @user.name %>, <%= @user.email %>
+
+<%= form_for(@facebookpost) do |f| %>
+  <div class="field">
+    <%= f.text_area :post, placeholder: "Compose new facebook post..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+<div class="span8">
+  <% if @user.facebookposts.any? %>
+    <h3>Facebookposts (<%= @user.facebookposts.count %>)</h3>
+    <ol class="facebookposts">
+      <% @fbposts.each do |fbpost| %>
+        <li>
+          <%= fbpost.post %>, <%= fbpost.post_id %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
+
+
+
