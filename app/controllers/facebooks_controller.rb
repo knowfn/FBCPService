@@ -10,8 +10,9 @@ class FacebooksController < ApplicationController
   
   def index
     Rails.logger.info("index CALLED ...........................")
-    Rails.logger.info(SITE_URL)
     Rails.logger.info(APP_ID)
+    Rails.logger.info(APP_SECRET)
+    Rails.logger.info(SITE_URL)
     if session['access_token']
       @face='You are logged in! <a href="/logout">Logout</a>'
       
