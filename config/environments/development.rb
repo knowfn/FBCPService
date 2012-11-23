@@ -38,6 +38,6 @@ FBCPService::Application.configure do
   # Facebook setting
   APP_ID="526770297333543"
   APP_SECRET="225049e92a0e0d5690717a00813398c1"
-#  SITE_URL="http://localhost:3000/"
+  SITE_URL="http://localhost:3000/"
 
 end
