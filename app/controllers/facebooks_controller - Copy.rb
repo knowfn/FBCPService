@@ -1,36 +1,14 @@
 class FacebooksController < ApplicationController
 
-#  APP_ID="526770297333543"
-#  APP_SECRET="225049e92a0e0d5690717a00813398c1"
-#  SITE_URL="http://localhost:3000/"
- 
-#  APP_ID="166864856786067"
-#  APP_SECRET="1b681b2579723f696c48775a6d8a302a"
+  APP_ID="166864856786067"
+  APP_SECRET="1b681b2579723f696c48775a6d8a302a"
+  SITE_URL="http://localhost:3000/"
 #  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
   
   def index
     Rails.logger.info("index CALLED ...........................")
-    Rails.logger.info(SITE_URL)
-    Rails.logger.info(APP_ID)
     if session['access_token']
-      @face='You are logged in! <a href="/logout">Logout</a>'
-      
-      #GET lookup data from facebook
-      @graph = Koala::Facebook::API.new(session["access_token"])
-      facebook_user = @graph.get_object("me")
-      Rails.logger.info(facebook_user)
-      user_email = facebook_user["username"]+"@facebook.com"
-      Rails.logger.info(user_email)
-      
-      user = User.find_by_email(user_email)
-      if user
-        Rails.logger.info(user.name)
-        Rails.logger.info(user.email)
-        redirect_to user    # fetch the posts and display them and allow the user to post new ones
-      else
-          # Ideally this should never be invoked since access_token is obtained only for the user who are already in the Users DB and identified by email
-        @face='<a href="/login">Facebook Login</a>'
-      end      
+      @face='You are logged in! <a href="/logout">Logout</a>'      
     else
       @face='<a href="/login">Facebook Login</a>'
     end
@@ -62,33 +40,7 @@ class FacebooksController < ApplicationController
 
     Rails.logger.info("Access_Token : ...........................")
     Rails.logger.info(session['access_token'])
-
-      #Lookup data from facebook
-      @graph = Koala::Facebook::API.new(session["access_token"])
-      facebook_user = @graph.get_object("me")
-      Rails.logger.info(facebook_user)
-      user_email = facebook_user["username"]+"@facebook.com"
-      Rails.logger.info(user_email)
-      
-      user = User.find_by_email(user_email)
-      if user
-        Rails.logger.info("PRE-REGISTERED USER.............")
-        Rails.logger.info(user.name)
-        Rails.logger.info(user.email)
-        redirect_to user    # fetch the posts and display them and allow the user to post new ones
-      else
-          # This user is signin up for the service, create a new entry for user in User DB
-        Rails.logger.info("..........Create NEW USER in User DB with handle = " + user_email)
-        @user = User.new({"name"=>facebook_user["username"], "email"=>user_email})
-        if @user.save
-          flash[:success] = "Welcome to the FBCP!"
-          redirect_to @user
-        else
-          Rails.logger.info("........save to Users DB FAILED..............")
-          redirect_to '/logout'
-        end
-
-      end
+    redirect_to '/menu'
   end
 
   def menu

@@ -4,12 +4,33 @@
 
 <%= form_for(@facebookpost) do |f| %>
   <div class="field">
-    <%= f.text_area :post, placeholder: "Compose new facebook post..." %>
+    <%= f.text_field :post, placeholder: "Compose new facebook post..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
 
+  <div class="alert alert-error">
+    Latest Received Posts ...
+  </div>
 
+  <ul>
+    <% @RcvdPosts.each do |pst| %>
+      <li> <%= pst["from"]["name"] %>, <%= pst["created_time"] %>, <%= pst["application"]["name"] %>, <%= pst["message"] %></li>
+    <% end %>
+  </ul>
+
+  <div class="alert alert-error">
+    Latest Self Posts ...
+  </div>
+
+  <ul>
+    <% @SelfPosts.each do |pst| %>
+      <li> <%= pst["from"]["name"] %>, <%= pst["created_time"] %>, <%= pst["message"] %></li>
+    <% end %>
+  </ul>
+
+
+  
 <div class="span8">
   <% if @user.facebookposts.any? %>
     <h3>Facebookposts (<%= @user.facebookposts.count %>)</h3>
@@ -21,7 +42,7 @@
       <% end %>
     </ol>
   <% end %>
-</div>
+  </div>
 
 
 
