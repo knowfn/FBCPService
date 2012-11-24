@@ -16,6 +16,9 @@ end
     Rails.logger.info(APP_ID)
     Rails.logger.info(APP_SECRET)
     Rails.logger.info(SITE_URL)
+    Rails.logger.info(XSITEURL)
+    Rails.logger.info("index ...........................")
+    
     if session['access_token']
       @face='You are logged in! <a href="/logout">Logout</a>'
       
@@ -51,10 +54,12 @@ end
 
   def logout
     Rails.logger.info("logout CALLED ...........................")
-    Rails.logger.info("logout CALLED ...........................")
     session['oauth'] = nil
     session['access_token'] = nil
-    redirect_to '/menu'
+    redirect_to '/index'
+    #TODO: Redirecting to index will invoke login which the user will click. Since browser is still logged into facebook,
+    #this app will automatically log back into same user.
+    
   end
 
 #method to handle the redirect from facebook back to you
