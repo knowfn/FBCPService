@@ -1,13 +1,13 @@
 class FacebooksController < ApplicationController
 
-if Rails.env.development?
-  APP_ID="526770297333543"
-  APP_SECRET="225049e92a0e0d5690717a00813398c1"
+#if Rails.env.development?
+#  APP_ID="526770297333543"
+#  APP_SECRET="225049e92a0e0d5690717a00813398c1"
 #  SITE_URL="http://localhost:3000/"
-end
-if Rails.env.production?
-  APP_ID="166864856786067"
-  APP_SECRET="1b681b2579723f696c48775a6d8a302a"
+#end
+#if Rails.env.production?
+#  APP_ID="166864856786067"
+#  APP_SECRET="1b681b2579723f696c48775a6d8a302a"
 #  SITE_URL="http://blooming-oasis-4471.herokuapp.com/"
 end
 
