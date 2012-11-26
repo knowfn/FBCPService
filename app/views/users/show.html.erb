@@ -15,7 +15,11 @@
 
   <ul>
     <% @RcvdPosts.each do |pst| %>
-      <li> <%= pst["from"]["name"] %>, <%= pst["created_time"] %>, <%= pst["application"]["name"] %>, <%= pst["message"] %></li>
+      <% if pst["application"] %>
+          <li> <%= pst["from"]["name"] %>, <%= pst["created_time"] %>, <%= pst["application"]["name"] %>, <%= pst["message"] %></li>
+      <% else %>
+          <li> <%= pst["from"]["name"] %>, <%= pst["created_time"] %>, <%= "NotPostedViaApp" %>, <%= pst["message"] %></li>
+      <% end %>
     <% end %>
   </ul>
 
