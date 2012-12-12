@@ -36,6 +36,12 @@ class UsersController < ApplicationController
         Rails.logger.info("........access_token missing in user#show.................")
      end
 
+    respond_to do |format|
+      format.html #show.html.erb
+      format.xml  { render :xml => @RcvdPosts }
+      format.json { render :json => @RcvdPosts }
+    end
+
  
   end
 
